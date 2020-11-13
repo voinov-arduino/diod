@@ -1,9 +1,12 @@
+// coding by Voinoff
+        // for art-object 
+            //
 int firstPin = 3;   // Пин, который отправляет сигнал
 int secondPin = 2;  // Пин, который принимает сигнал
-int ledPin = 13;    // Светодиод
-int redPin = 9; // Красный пин (модет быть)
+int ledPin = 13;    // общий анод
+int redPin = 9; // Красный пин (может быть)
 int bluePin = 10; // Синий пин (может быть)
-int greenPin = 11; // Зеленый пин (мб)
+int greenPin = 11; // Зеленый пин (может быть)
 int work; // Работает
 int i = 0;
 int setColor(int red, int green, int blue);
@@ -54,42 +57,37 @@ void loop(){
      
         Serial.println(i);
         switch(i){
+          case 0:
+          digitalWrite(redPin, LOW);
+          digitalWrite(bluePin, LOW);
+          digitalWrite(greenPin, LOW);
           case 1:
-          digitalWrite(9, HIGH);
-          digitalWrite(10, LOW);
-          digitalWrite(11, LOW);
+          digitalWrite(redPin, HIGH);
+          digitalWrite(bluePin, LOW);
+          digitalWrite(greenPin, LOW);
           break;
           case 2:
-          digitalWrite(10, HIGH);
-          digitalWrite(9, LOW);
-          digitalWrite(11, LOW);
+          digitalWrite(bluePin, HIGH);
+          digitalWrite(redPin, LOW);
+          digitalWrite(greenPin, LOW);
           break;
           case 3:
-          digitalWrite(11, HIGH);
-          digitalWrite(10, LOW);
-          digitalWrite(9, LOW);
+          digitalWrite(greenPin, HIGH);
+          digitalWrite(redPin, LOW);
+          digitalWrite(bluePin, LOW);
           break;
           case 4:
-          digitalWrite(10, HIGH);
-          digitalWrite(9, HIGH);
-          digitalWrite(11, LOW);
+          digitalWrite(greenPin, HIGH);
+          digitalWrite(redPin, HIGH);
+          digitalWrite(bluePin, LOW);
           break;
           case 5:
-          digitalWrite(9, HIGH);
-          digitalWrite(11, HIGH);
-          digitalWrite(10, LOW);
+          digitalWrite(redPin, HIGH);
+          digitalWrite(bluePin, HIGH);
+          digitalWrite(greenPin, LOW);
           break;
           
           
         }
-
-
-
-
-
-
-    
-
-
 }
 
