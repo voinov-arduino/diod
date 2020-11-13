@@ -32,7 +32,7 @@ int getDeltaTime()
 
     time_start = micros(); // Количество микросекунд со старта программы
     digitalWrite(secondPin, HIGH); // Отправляем сигнал
-    while(digitalRead(firstPin) == LOW); // Джем пока дойдет сигнал от одного пина к другому
+    while(digitalRead(firstPin) == LOW); // ждем пока дойдет сигнал от одного пина к другому
     time_finish = micros(); // Еще раз смотрим сколько прошло микросекунд со старта программы
     time_delta = time_finish - time_start; // Высчитываем сколько микросекунд ушло на передачу сигнала между пинами
     digitalWrite(secondPin, LOW); // Останавливаем передачу сигнала
