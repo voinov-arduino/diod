@@ -1,0 +1,95 @@
+int firstPin = 3;   // Пин, который отправляет сигнал
+int secondPin = 2;  // Пин, который принимает сигнал
+int ledPin = 13;    // Светодиод
+int redPin = 9; // Красный пин (модет быть)
+int bluePin = 10; // Синий пин (может быть)
+int greenPin = 11; // Зеленый пин (мб)
+int work; // Работает
+int i = 0;
+int setColor(int red, int green, int blue);
+#define COMMON_ANODE
+void setup()
+{
+    pinMode(secondPin, OUTPUT);
+    pinMode(firstPin, INPUT);
+    pinMode(ledPin, OUTPUT);
+    pinMode(redPin,OUTPUT);
+    pinMode(bluePin, OUTPUT);
+    pinMode(greenPin, OUTPUT);
+
+
+    Serial.begin(9600);
+    
+}
+
+
+int getDeltaTime()
+{
+    
+    int time_start=0;
+    int time_finish = 0;
+    int time_delta = 0;
+
+    time_start = micros(); // Количество микросекунд со старта программы
+    digitalWrite(secondPin, HIGH); // Отправляем сигнал
+    while(digitalRead(firstPin) == LOW); // Джем пока дойдет сигнал от одного пина к другому
+    time_finish = micros(); // Еще раз смотрим сколько прошло микросекунд со старта программы
+    time_delta = time_finish - time_start; // Высчитываем сколько микросекунд ушло на передачу сигнала между пинами
+    digitalWrite(secondPin, LOW); // Останавливаем передачу сигнала
+
+    //Serial.println(time_delta);
+    return time_delta;
+}
+void loop(){
+    
+  int ms = getDeltaTime();
+    
+  if(ms > 100){
+    i++;
+    delay (1000);
+    if(i >=6){
+      i = 0;
+    }
+  }
+     
+        Serial.println(i);
+        switch(i){
+          case 1:
+          digitalWrite(9, HIGH);
+          digitalWrite(10, LOW);
+          digitalWrite(11, LOW);
+          break;
+          case 2:
+          digitalWrite(10, HIGH);
+          digitalWrite(9, LOW);
+          digitalWrite(11, LOW);
+          break;
+          case 3:
+          digitalWrite(11, HIGH);
+          digitalWrite(10, LOW);
+          digitalWrite(9, LOW);
+          break;
+          case 4:
+          digitalWrite(10, HIGH);
+          digitalWrite(9, HIGH);
+          digitalWrite(11, LOW);
+          break;
+          case 5:
+          digitalWrite(9, HIGH);
+          digitalWrite(11, HIGH);
+          digitalWrite(10, LOW);
+          break;
+          
+          
+        }
+
+
+
+
+
+
+    
+
+
+}
+
