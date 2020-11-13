@@ -46,7 +46,7 @@ void loop(){
     
   if(ms > 100){
     i++;
-    delay (1000);
+    delay (500);
     if(i >=6){
       i = 0;
     }
