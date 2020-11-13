@@ -7,7 +7,6 @@ int ledPin = 13;    // общий анод
 int redPin = 9; // Красный пин (может быть)
 int bluePin = 10; // Синий пин (может быть)
 int greenPin = 11; // Зеленый пин (может быть)
-int work; // Работает
 int i = 0;
 int setColor(int red, int green, int blue);
 #define COMMON_ANODE
