@@ -1,6 +1,9 @@
 // coding by Voinoff
-        // for art-object 
-            //
+// for art-object 
+
+
+
+
 int firstPin = 3;   // Пин, который отправляет сигнал
 int secondPin = 2;  // Пин, который принимает сигнал
 int ledPin = 13;    // общий анод
@@ -8,6 +11,11 @@ int redPin = 9; // Красный пин (может быть)
 int bluePin = 10; // Синий пин (может быть)
 int greenPin = 11; // Зеленый пин (может быть)
 int i = 0;
+
+
+
+
+
 void setup()
 {
     pinMode(secondPin, OUTPUT);
@@ -21,6 +29,10 @@ void setup()
     Serial.begin(9600);
     
 }
+
+
+
+
 
 
 int getDeltaTime()
@@ -40,6 +52,13 @@ int getDeltaTime()
     //Serial.println(time_delta);
     return time_delta;
 }
+
+
+
+
+
+
+
 void loop(){
     
   int ms = getDeltaTime();
