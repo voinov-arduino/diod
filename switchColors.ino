@@ -1,4 +1,4 @@
-// coding by Voinoff
+// by Voinoff
 // for art-object 
 
 
