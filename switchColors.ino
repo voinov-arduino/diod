@@ -2,8 +2,6 @@
 // for art-object 
 
 
-
-
 uint8_t firstPin = 3;   // Пин, который отправляет сигнал
 uint8_t secondPin = 2;  // Пин, который принимает сигнал
 uint8_t ledPin = 13;    // общий анод
@@ -11,9 +9,6 @@ uint8_t redPin = 9; // Красный пин (может быть)
 uint8_t bluePin = 10; // Синий пин (может быть)
 uint8_t greenPin = 11; // Зеленый пин (может быть)
 int i = 0;
-
-
-
 
 
 void setup()
@@ -29,11 +24,6 @@ void setup()
     Serial.begin(9600);
     
 }
-
-
-
-
-
 
 int getDeltaTime()
 {
@@ -52,12 +42,6 @@ int getDeltaTime()
     //Serial.println(time_delta);
     return time_delta;
 }
-
-
-
-
-
-
 
 void loop(){
     
