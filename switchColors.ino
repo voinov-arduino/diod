@@ -1,15 +1,13 @@
 // by Voinoff
-// for art-object 
-
+// for art-object
 
 uint8_t firstPin = 3;   // Пин, который отправляет сигнал
 uint8_t secondPin = 2;  // Пин, который принимает сигнал
 uint8_t ledPin = 13;    // общий анод
-uint8_t redPin = 9; // Красный пин (может быть)
-uint8_t bluePin = 10; // Синий пин (может быть)
-uint8_t greenPin = 11; // Зеленый пин (может быть)
-int i = 0;
-
+uint8_t redPin = 9; // Красный пин
+uint8_t bluePin = 10; // Синий пин
+uint8_t greenPin = 11; // Зеленый пин
+int activation = 0; // Прикосновения
 
 void setup()
 {
@@ -19,15 +17,12 @@ void setup()
     pinMode(redPin,OUTPUT);
     pinMode(bluePin, OUTPUT);
     pinMode(greenPin, OUTPUT);
-
-
     Serial.begin(9600);
-    
 }
 
 int getDeltaTime()
 {
-    
+
     int time_start=0;
     int time_finish = 0;
     int time_delta = 0;
@@ -44,49 +39,46 @@ int getDeltaTime()
 }
 
 void loop(){
-    
-  int ms = getDeltaTime();
-    
-  if(ms > 100){
-    i++;
-    delay (500);
-    if(i >=6){
-      i = 0;
-    }
-  }
-     
-        Serial.println(i);
-        switch(i){
-          case 0:
-          digitalWrite(redPin, LOW);
-          digitalWrite(bluePin, LOW);
-          digitalWrite(greenPin, LOW);
-          case 1:
-          digitalWrite(redPin, HIGH);
-          digitalWrite(bluePin, LOW);
-          digitalWrite(greenPin, LOW);
-          break;
-          case 2:
-          digitalWrite(bluePin, HIGH);
-          digitalWrite(redPin, LOW);
-          digitalWrite(greenPin, LOW);
-          break;
-          case 3:
-          digitalWrite(greenPin, HIGH);
-          digitalWrite(redPin, LOW);
-          digitalWrite(bluePin, LOW);
-          break;
-          case 4:
-          digitalWrite(greenPin, HIGH);
-          digitalWrite(redPin, HIGH);
-          digitalWrite(bluePin, LOW);
-          break;
-          case 5:
-          digitalWrite(redPin, HIGH);
-          digitalWrite(bluePin, HIGH);
-          digitalWrite(greenPin, LOW);
-          break;
-          
-          
+
+    int us = getDeltaTime();
+    if(us > 100){ // Если нажатие происходит, то переключаем вариант
+        activation++;
+        delay (500);
+        if(activation >=6){
+            activation = 0;
         }
+    }
+    Serial.println(activation);
+    switch(activation){
+        case 0:
+            digitalWrite(redPin, LOW);
+            digitalWrite(bluePin, LOW);
+            digitalWrite(greenPin, LOW);
+            break;
+        case 1:
+            digitalWrite(redPin, HIGH);
+            digitalWrite(bluePin, LOW);
+            digitalWrite(greenPin, LOW);
+            break;
+        case 2:
+            digitalWrite(bluePin, HIGH);
+            digitalWrite(redPin, LOW);
+            digitalWrite(greenPin, LOW);
+            break;
+        case 3:
+            digitalWrite(greenPin, HIGH);
+            digitalWrite(redPin, LOW);
+            digitalWrite(bluePin, LOW);
+            break;
+        case 4:
+            digitalWrite(greenPin, HIGH);
+            digitalWrite(redPin, HIGH);
+            digitalWrite(bluePin, LOW);
+            break;
+        case 5:
+            digitalWrite(redPin, HIGH);
+            digitalWrite(bluePin, HIGH);
+            digitalWrite(greenPin, LOW);
+            break;
+    }
 }
