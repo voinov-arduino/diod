@@ -43,7 +43,7 @@ void loop(){
     int us = getDeltaTime();
     if(us > 100){ // Если нажатие происходит, то переключаем вариант
         activation++;
-        delay (500);
+        delay (250);
         if(activation >=6){
             activation = 0;
         }
